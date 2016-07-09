@@ -9,7 +9,7 @@ var FindContainer = React.createClass({
           <span>1 mile radius</span>
           <span>of my current location</span>
         </div>
-        <button>Tell Me Where To Eat</button>
+        <button onClick={this.props.getRandomEstablishment}>Tell Me Where To Eat</button>
       </div>
     )
   }
