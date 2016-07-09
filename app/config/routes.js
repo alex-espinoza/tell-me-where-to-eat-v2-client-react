@@ -7,6 +7,5 @@ var IndexRoute = Router.IndexRoute;
 
 module.exports = (
   <Route path="/" component={Main}>
-    <IndexRoute component={Home} />
   </Route>
 );

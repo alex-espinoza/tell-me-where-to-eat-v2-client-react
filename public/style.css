@@ -49,16 +49,20 @@ table {
 }
 
 /* Tell Me Where To Eat Styling */
-.main-container {
+.find-container {
   width: 75%;
   margin: 4rem auto 0;
   text-align: center;
 }
 
-.main-container .description span {
+.find-container .description span {
   display: block;
 }
 
-.main-container button {
+.find-container button {
   margin: 1rem 0 0 0;
+}
+
+.establishment-container {
+  display: none;
 }
