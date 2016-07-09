@@ -4,8 +4,12 @@ var Main = React.createClass({
   render: function() {
     return (
       <div className="main-container">
-        <div>Find a restaurant within a 1 mile radius of my current location</div>
-        <div>{this.props.children}</div>
+        <div className="description">
+          <span>Find a restaurant within a</span>
+          <span>1 mile radius</span>
+          <span>of my current location</span>
+        </div>
+        <button>Tell Me Where To Eat</button>
       </div>
     )
   },
