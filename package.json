@@ -1,0 +1,19 @@
+{
+  "name": "tell-me-where-to-eat-v2-client-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-espinoza/tell-me-where-to-eat-v2-client-react.git"
+  },
+  "author": "Alex Espinoza <aespinoza@aspria.net>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex-espinoza/tell-me-where-to-eat-v2-client-react/issues"
+  },
+  "homepage": "https://github.com/alex-espinoza/tell-me-where-to-eat-v2-client-react#readme"
+}
