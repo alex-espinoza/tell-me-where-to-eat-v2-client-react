@@ -1,6 +1,7 @@
 var React = require('react');
 var FindContainer = require('./FindContainer');
 var EstablishmentContainer = require('./EstablishmentContainer');
+var EstablishmentAPI = require('../utils/EstablishmentAPI');
 
 var Main = React.createClass({
   getInitialState: function() {
@@ -10,7 +11,10 @@ var Main = React.createClass({
   },
 
   handleGetRandomEstablishment: function() {
-    console.log('server call with geolocation data goes here');
+    EstablishmentAPI.getEstablishment()
+      .then(function(response) {
+        console.log(response);
+      });
   },
 
   render: function() {
