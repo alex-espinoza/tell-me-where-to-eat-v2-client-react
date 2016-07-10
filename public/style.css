@@ -65,4 +65,11 @@ table {
 
 .establishment-container {
   display: none;
+  width: 75%;
+  margin: 4rem auto 0;
+  text-align: center;
+}
+
+.establishment-container.visible {
+  display: block;
 }
