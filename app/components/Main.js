@@ -9,6 +9,7 @@ var Main = React.createClass({
       establishment: {},
       loading: false,
       error: false,
+      firstAPICallFinished: false
     }
   },
 
@@ -21,7 +22,8 @@ var Main = React.createClass({
           console.log(response.establishment);
           this.setState({
             establishment: response.establishment,
-            loading: false
+            loading: false,
+            firstAPICallFinished: true
           });
         } else {
           console.log(response);
@@ -39,6 +41,7 @@ var Main = React.createClass({
         <FindContainer
           getRandomEstablishment={this.handleGetRandomEstablishment}
           loading={this.state.loading}
+          firstAPICallFinished={this.state.firstAPICallFinished}
         />
         <EstablishmentContainer
           establishment={this.state.establishment}

@@ -28,9 +28,15 @@ var FindContainer = React.createClass({
     }
   },
 
+  getFindContainerClasses: function() {
+    var containerClass = 'find-container';
+    var visible = this.props.firstAPICallFinished ? ' hidden' : '';
+    return containerClass + visible;
+  },
+
   render: function() {
     return (
-      <div className="find-container">
+      <div className={this.getFindContainerClasses()}>
         <div className="description">
           <span>Find a restaurant within a</span>
           <span>1 mile radius</span>
