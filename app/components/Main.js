@@ -44,6 +44,8 @@ var Main = React.createClass({
           firstAPICallFinished={this.state.firstAPICallFinished}
         />
         <EstablishmentContainer
+          getRandomEstablishment={this.handleGetRandomEstablishment}
+          loading={this.state.loading}
           establishment={this.state.establishment}
         />
       </div>

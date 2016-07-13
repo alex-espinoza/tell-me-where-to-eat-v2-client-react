@@ -1,4 +1,5 @@
 var React = require('react');
+var TellMeButton = require('./TellMeButton');
 
 var EstablishmentContainer = React.createClass({
   getEstablishmentContainerClasses: function() {
@@ -15,6 +16,10 @@ var EstablishmentContainer = React.createClass({
         <p>{this.props.establishment.address && this.props.establishment.address.join(' ')}</p>
         <p>{this.props.establishment.phone_number}</p>
         <p>{this.props.establishment.url}</p>
+        <TellMeButton
+          getRandomEstablishment={this.props.getRandomEstablishment}
+          loading={this.props.loading}
+        />
       </div>
     )
   }
