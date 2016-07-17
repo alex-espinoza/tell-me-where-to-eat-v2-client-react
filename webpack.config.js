@@ -1,7 +1,11 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
-module.exports = {
+var DEV_ENV = process.env.NODE_ENV !== 'production' ? true : false;
+var styles = 'css-loader!postcss-loader!sass-loader?indentedSyntax=sass&includePaths[]=' + __dirname + './app';
+var sass_loader = DEV_ENV ? 'style-loader!' + styles : ExtractTextPlugin.extract('style-loader', styles);
+
+var config = {
   context: __dirname + '/app',
   entry: {
     javascript: './App.js',
@@ -16,17 +20,11 @@ module.exports = {
       {
         test: /\.js?$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015']
-        }
+        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015']
       },
       {
         test: /\.sass$/,
-        loader: ExtractTextPlugin.extract(
-            'style-loader',
-            'css-loader!postcss-loader!sass-loader?indentedSyntax=sass&includePaths[]=' + __dirname + './app'
-          )
+        loader: sass_loader
       },
       {
         test: /\.html$/,
@@ -48,3 +46,5 @@ module.exports = {
     root: [__dirname + './app']
   }
 };
+
+module.exports = config;
