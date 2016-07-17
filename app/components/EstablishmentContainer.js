@@ -1,3 +1,5 @@
+require('../stylesheets/establishment_container');
+
 var React = require('react');
 var TellMeButton = require('./TellMeButton');
 

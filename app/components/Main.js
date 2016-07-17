@@ -1,3 +1,5 @@
+require('../stylesheets/main');
+
 var React = require('react');
 var FindContainer = require('./FindContainer');
 var EstablishmentContainer = require('./EstablishmentContainer');

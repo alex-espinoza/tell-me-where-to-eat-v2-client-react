@@ -5,7 +5,6 @@ module.exports = {
   context: __dirname + '/app',
   entry: {
     javascript: './App.js',
-    css: './css/app.css',
     html: './index.html'
   },
   output: {
@@ -15,7 +14,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.js?$/,
         exclude: /node_modules/,
         loader: 'babel',
         query: {
@@ -23,11 +22,10 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        exclude: /node_modules/,
+        test: /\.sass$/,
         loader: ExtractTextPlugin.extract(
-            'style',
-            'css!postcss-loader'
+            'style-loader',
+            'css-loader!postcss-loader!sass-loader?indentedSyntax=sass&includePaths[]=' + __dirname + './app'
           )
       },
       {
@@ -40,5 +38,13 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('style.css')
   ],
-  postcss: [autoprefixer]
+  postcss: [
+    autoprefixer({
+      browsers: ['last 2 versions']
+    })
+  ],
+  resolve: {
+    extensions: ['', '.js', '.sass'],
+    root: [__dirname + './app']
+  }
 };

@@ -1,3 +1,5 @@
+require('../stylesheets/tell_me_button');
+
 var React = require('react');
 
 var TellMeButton = React.createClass({
@@ -30,7 +32,7 @@ var TellMeButton = React.createClass({
 
   render: function() {
     return (
-      <button onClick={this.props.getRandomEstablishment}>{this.getButtonText()}</button>
+      <button className="find-button" onClick={this.props.getRandomEstablishment}>{this.getButtonText()}</button>
     )
   }
 });
