@@ -31,8 +31,9 @@ var TellMeButton = React.createClass({
   },
 
   render: function() {
+    var disabled = this.props.loading ? true : false;
     return (
-      <button className="find-button" onClick={this.props.getRandomEstablishment}>{this.getButtonText()}</button>
+      <button className="find-button" onClick={this.props.getRandomEstablishment} disabled={disabled}>{this.getButtonText()}</button>
     )
   }
 });
