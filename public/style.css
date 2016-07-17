@@ -49,6 +49,11 @@ table {
 }
 
 /* Tell Me Where To Eat Styling */
+body,
+button {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 .emoji-background,
 .find-container {
   position: fixed;
@@ -81,6 +86,8 @@ table {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-size: 36px;
+  line-height: 42px;
   text-align: center;
   z-index: 1;
 }
@@ -94,6 +101,7 @@ table {
 }
 
 .find-container button {
+  font-size: 20px;
   margin: 1rem 0 0 0;
 }
 
