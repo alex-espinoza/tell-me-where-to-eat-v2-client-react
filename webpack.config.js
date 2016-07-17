@@ -5,7 +5,7 @@ module.exports = {
   context: __dirname + '/app',
   entry: {
     javascript: './App.js',
-    css: './css/style.css'
+    css: './css/app.css'
   },
   output: {
     filename: 'bundle.js',
