@@ -65,6 +65,7 @@ button {
   z-index: 0;
   user-select: none;
   pointer-events: none;
+  transform-style: preserve-3d;
 }
 
 .emoji-background .food-emoji {
