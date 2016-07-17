@@ -1,11 +1,12 @@
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
 module.exports = {
   context: __dirname + '/app',
   entry: {
     javascript: './App.js',
-    css: './css/app.css'
+    css: './css/app.css',
+    html: './index.html'
   },
   output: {
     filename: 'bundle.js',
@@ -28,11 +29,16 @@ module.exports = {
             'style',
             'css!postcss-loader'
           )
-      }
+      },
+      {
+        test: /\.html$/,
+        exclude: /node_modules/,
+        loader: 'file?name=[name].[ext]',
+      },
     ]
   },
   plugins: [
-    new ExtractTextPlugin("style.css")
+    new ExtractTextPlugin('style.css')
   ],
   postcss: [autoprefixer]
 };
