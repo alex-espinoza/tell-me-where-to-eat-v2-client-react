@@ -9,8 +9,98 @@ var Main = React.createClass({
       establishment: {},
       loading: false,
       error: false,
-      firstAPICallFinished: false
+      firstAPICallFinished: false,
+      foodEmojis: [
+        '🍉',
+        '🍍',
+        '🍎',
+        '🍓',
+        '🍅',
+        '🍆',
+        '🌽',
+        '🍞',
+        '🍖',
+        '🍗',
+        '🍔',
+        '🍟',
+        '🍕',
+        '🍳',
+        '🍲',
+        '🍱',
+        '🍙',
+        '🍚',
+        '🍛',
+        '🍜',
+        '🍝',
+        '🍠',
+        '🍢',
+        '🍣',
+        '🍤',
+        '🍥',
+        '🍡',
+        '🍦',
+        '🍧',
+        '🍨',
+        '🍩',
+        '🍪',
+        '🎂',
+        '🍰',
+        '🍫',
+        '🍮',
+        '☕',
+        '🍵',
+        '🍶',
+        '🍷',
+        '🍸',
+        '🍹',
+        '🍺',
+      ],
+      initialEmoji: '',
+      emojiInterval: null,
     }
+  },
+
+  componentWillMount: function() {
+    var initialEmoji = this.getRandomFoodEmoji();
+    var emojiInterval = this.setupEmojiInterval();
+
+    this.setState({
+      initialEmoji: initialEmoji,
+      emojiInterval: emojiInterval
+    })
+  },
+
+  componentDidUpdate: function() {
+    this.state.firstAPICallFinished && clearInterval(this.state.emojiInterval);
+  },
+
+  setupEmojiInterval: function() {
+    var emojiInterval = setInterval(function() {
+      var emojiSpan = document.getElementsByClassName('food-emoji')[0];
+      var currentEmoji = emojiSpan.innerText;
+      var randomEmoji = currentEmoji;
+
+      while (currentEmoji === randomEmoji) {
+        randomEmoji = this.getRandomFoodEmoji();
+      }
+
+      emojiSpan.classList.add('hidden');
+
+      setTimeout(function() {
+        emojiSpan.innerText = randomEmoji;
+        emojiSpan.classList.remove('hidden');
+      }, 400);
+    }.bind(this), 3800);
+
+    return emojiInterval;
+  },
+
+  getRandomFoodEmoji: function() {
+    return this.state.foodEmojis[Math.floor(Math.random() * this.state.foodEmojis.length)];
+  },
+
+  getInitialFoodEmoji: function() {
+    return this.getRandomFoodEmoji();
   },
 
   handleGetRandomEstablishment: function() {
@@ -38,6 +128,7 @@ var Main = React.createClass({
   render: function() {
     return (
       <div>
+        <div className="emoji-background"><span className="food-emoji">{this.state.initialEmoji}</span></div>
         <FindContainer
           getRandomEstablishment={this.handleGetRandomEstablishment}
           loading={this.state.loading}
