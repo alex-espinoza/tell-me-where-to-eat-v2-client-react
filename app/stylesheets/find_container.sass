@@ -2,6 +2,8 @@
   position: fixed
   width: 100%
   height: 100%
+  opacity: 1
+  transition: opacity 400ms
 
 .find-container .find-content
   position: absolute
@@ -14,7 +16,7 @@
   z-index: 1
 
 .find-container.hidden
-  display: none
+  opacity: 0
 
 .find-container .description span
   display: block
