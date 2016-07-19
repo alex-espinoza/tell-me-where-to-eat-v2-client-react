@@ -1,0 +1,23 @@
+.emoji-background
+  position: fixed
+  width: 100%
+  height: 100%
+
+.emoji-background
+  z-index: 0
+  user-select: none
+  pointer-events: none
+  transform-style: preserve-3d
+
+.emoji-background .food-emoji
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  font-size: 256px
+  text-shadow: 5px 5px 5px #333333
+  opacity: 0.3
+  transition: opacity 400ms
+
+.emoji-background .food-emoji.hidden
+  opacity: 0
