@@ -1,6 +1,10 @@
 require('../stylesheets/establishment_container');
 
 var React = require('react');
+var ReactGoogleMaps = require('react-google-maps');
+var GoogleMapLoader = ReactGoogleMaps.GoogleMapLoader;
+var GoogleMap = ReactGoogleMaps.GoogleMap;
+var Marker = ReactGoogleMaps.Marker;
 var TellMeButton = require('./TellMeButton');
 
 var EstablishmentContainer = React.createClass({
@@ -10,18 +14,41 @@ var EstablishmentContainer = React.createClass({
     return containerClass + visible;
   },
 
+  getEstablishmentCoordinates: function() {
+    if (this.props.establishment.hasOwnProperty('name')) {
+      return {lat: this.props.establishment.coordinates[0], lng: this.props.establishment.coordinates[1]};
+    } else {
+      return {lat: 0, lng: 0};
+    }
+  },
+
   render: function() {
     return (
       <div className={this.getEstablishmentContainerClasses()}>
-        <p>{this.props.establishment.name}</p>
-        <p>{this.props.establishment.categories}</p>
-        <p>{this.props.establishment.address && this.props.establishment.address.join(' ')}</p>
-        <p>{this.props.establishment.phone_number}</p>
-        <p>{this.props.establishment.url}</p>
-        <TellMeButton
-          getRandomEstablishment={this.props.getRandomEstablishment}
-          loading={this.props.loading}
+        <GoogleMapLoader
+          query={{ libraries: "geometry,drawing,places,visualization" }}
+          containerElement={
+            <div className='map' />
+          }
+          googleMapElement={
+            <GoogleMap
+              zoom={16}
+              center={this.getEstablishmentCoordinates()}>
+              <Marker position={this.getEstablishmentCoordinates()} />
+            </GoogleMap>
+          }
         />
+        <div className="information">
+          <p>{this.props.establishment.name}</p>
+          <p>{this.props.establishment.categories}</p>
+          <p>{this.props.establishment.address && this.props.establishment.address.join(' ')}</p>
+          <p>{this.props.establishment.phone_number}</p>
+          <p>{this.props.establishment.url}</p>
+          <TellMeButton
+            getRandomEstablishment={this.props.getRandomEstablishment}
+            loading={this.props.loading}
+          />
+        </div>
       </div>
     )
   }

@@ -40,7 +40,7 @@ var Main = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="app-container">
         <EmojiBackground firstAPICallFinished={this.state.firstAPICallFinished} />
         <FindContainer
           getRandomEstablishment={this.handleGetRandomEstablishment}
