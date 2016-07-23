@@ -18,6 +18,7 @@ var TellMeButton = React.createClass({
         'How about...',
         "I'll find you something nice...",
         'I gotchu...',
+        'Another one...'
       ]
     }
   },
