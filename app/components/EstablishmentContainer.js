@@ -5,6 +5,7 @@ var ReactGoogleMaps = require('react-google-maps');
 var GoogleMapLoader = ReactGoogleMaps.GoogleMapLoader;
 var GoogleMap = ReactGoogleMaps.GoogleMap;
 var Marker = ReactGoogleMaps.Marker;
+var OverlayView = ReactGoogleMaps.OverlayView;
 var TellMeButton = require('./TellMeButton');
 
 var EstablishmentContainer = React.createClass({
@@ -35,6 +36,13 @@ var EstablishmentContainer = React.createClass({
               zoom={16}
               center={this.getEstablishmentCoordinates()}>
               <Marker position={this.getEstablishmentCoordinates()} />
+              <OverlayView
+                position={this.props.userLocation}
+                mapPaneName={OverlayView.OVERLAY_LAYER}
+                getPixelPositionOffset={this.getPixelPositionOffset}
+              >
+                <div className="user-location-marker" />
+              </OverlayView>
             </GoogleMap>
           }
         />

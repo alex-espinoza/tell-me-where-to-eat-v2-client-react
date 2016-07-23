@@ -9,6 +9,7 @@ var EstablishmentAPI = require('../utils/EstablishmentAPI');
 var Main = React.createClass({
   getInitialState: function() {
     return {
+      userLocation: {lat: 0, lng: 0},
       establishment: {},
       loading: false,
       error: false,
@@ -20,15 +21,15 @@ var Main = React.createClass({
     this.setState({loading: true});
 
     navigator.geolocation.getCurrentPosition(function(position) {
-      console.log(position.coords.latitude, position.coords.longitude);
       EstablishmentAPI.getEstablishment(position.coords.latitude, position.coords.longitude)
         .then(function(response) {
           if (response.establishment) {
             console.log(response.establishment);
             this.setState({
+              userLocation: {lat: position.coords.latitude, lng: position.coords.longitude},
               establishment: response.establishment,
               loading: false,
-              firstAPICallFinished: true
+              firstAPICallFinished: true,
             });
           } else {
             console.log(response);
@@ -38,7 +39,7 @@ var Main = React.createClass({
             });
           }
         }.bind(this));
-    });
+    }.bind(this));
   },
 
   render: function() {
@@ -52,8 +53,9 @@ var Main = React.createClass({
         />
         <EstablishmentContainer
           getRandomEstablishment={this.handleGetRandomEstablishment}
-          loading={this.state.loading}
+          userLocation={this.state.userLocation}
           establishment={this.state.establishment}
+          loading={this.state.loading}
         />
       </div>
     )
