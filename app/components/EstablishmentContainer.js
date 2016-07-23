@@ -45,7 +45,9 @@ var EstablishmentContainer = React.createClass({
                 mapPaneName={OverlayView.OVERLAY_LAYER}
                 getPixelPositionOffset={this.getPixelPositionOffset}
               >
-                <div className="user-location-marker" />
+                <div className="user-location-marker">
+                  <div className="user-location-pulse" />
+                </div>
               </OverlayView>
             </GoogleMap>
           }
