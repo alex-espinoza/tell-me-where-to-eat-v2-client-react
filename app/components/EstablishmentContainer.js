@@ -38,16 +38,20 @@ var EstablishmentContainer = React.createClass({
             </GoogleMap>
           }
         />
-        <div className="information">
-          <p>{this.props.establishment.name}</p>
-          <p>{this.props.establishment.categories}</p>
-          <p>{this.props.establishment.address && this.props.establishment.address.join(' ')}</p>
-          <p>{this.props.establishment.phone_number}</p>
-          <p>{this.props.establishment.url}</p>
-          <TellMeButton
-            getRandomEstablishment={this.props.getRandomEstablishment}
-            loading={this.props.loading}
-          />
+        <div className="information-container">
+          <div className="information">
+            <h1>{this.props.establishment.name}</h1>
+            <p>{this.props.establishment.categories}</p>
+            <p>{this.props.establishment.address && this.props.establishment.address.join(' ')}</p>
+            <a href={'tel:' + this.props.establishment.phone_number}>{this.props.establishment.phone_number}</a>
+            <a href={this.props.establishment.url} target="_blank">Visit Yelp Page</a>
+          </div>
+          <div className="button-container">
+            <TellMeButton
+              getRandomEstablishment={this.props.getRandomEstablishment}
+              loading={this.props.loading}
+            />
+          </div>
         </div>
       </div>
     )
