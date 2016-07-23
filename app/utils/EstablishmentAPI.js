@@ -3,8 +3,8 @@ var axios = require('axios');
 var endpointUrl = 'https://tell-me-where-to-eat-v2-rails.herokuapp.com/api/establishments/find';
 
 var EstablishmentAPI = {
-  getEstablishment: function(latitude, longitude) {
-    var url = endpointUrl + '?latitude=' + latitude + '&longitude=' + longitude;
+  getEstablishment: function(latitude, longitude, radius) {
+    var url = endpointUrl + '?latitude=' + latitude + '&longitude=' + longitude + '&radius=' + radius;
 
     return axios.get(url)
       .then(function(response) {

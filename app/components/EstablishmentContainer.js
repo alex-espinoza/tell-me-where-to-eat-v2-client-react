@@ -23,6 +23,10 @@ var EstablishmentContainer = React.createClass({
     }
   },
 
+  getZoomFromRadius: function() {
+    return this.props.radius > 805 ? 15 : 16;
+  },
+
   render: function() {
     return (
       <div className={this.getEstablishmentContainerClasses()}>
@@ -33,7 +37,7 @@ var EstablishmentContainer = React.createClass({
           }
           googleMapElement={
             <GoogleMap
-              zoom={16}
+              zoom={this.getZoomFromRadius()}
               center={this.getEstablishmentCoordinates()}>
               <Marker position={this.getEstablishmentCoordinates()} />
               <OverlayView

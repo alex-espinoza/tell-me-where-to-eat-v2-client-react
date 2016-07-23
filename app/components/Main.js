@@ -10,6 +10,7 @@ var Main = React.createClass({
   getInitialState: function() {
     return {
       userLocation: {lat: 0, lng: 0},
+      radius: 805,
       establishment: {},
       loading: false,
       error: false,
@@ -21,7 +22,7 @@ var Main = React.createClass({
     this.setState({loading: true});
 
     navigator.geolocation.getCurrentPosition(function(position) {
-      EstablishmentAPI.getEstablishment(position.coords.latitude, position.coords.longitude)
+      EstablishmentAPI.getEstablishment(position.coords.latitude, position.coords.longitude, this.state.radius)
         .then(function(response) {
           if (response.establishment) {
             console.log(response.establishment);
@@ -42,12 +43,18 @@ var Main = React.createClass({
     }.bind(this));
   },
 
+  handleChangeRadius: function(radius) {
+    this.setState({radius: radius});
+  },
+
   render: function() {
     return (
       <div className="app-container">
         <EmojiBackground firstAPICallFinished={this.state.firstAPICallFinished} />
         <FindContainer
           getRandomEstablishment={this.handleGetRandomEstablishment}
+          changeRadius={this.handleChangeRadius}
+          radius={this.state.radius}
           loading={this.state.loading}
           firstAPICallFinished={this.state.firstAPICallFinished}
         />
@@ -55,6 +62,7 @@ var Main = React.createClass({
           getRandomEstablishment={this.handleGetRandomEstablishment}
           userLocation={this.state.userLocation}
           establishment={this.state.establishment}
+          radius={this.state.radius}
           loading={this.state.loading}
         />
       </div>
