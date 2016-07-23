@@ -19,23 +19,26 @@ var Main = React.createClass({
   handleGetRandomEstablishment: function() {
     this.setState({loading: true});
 
-    EstablishmentAPI.getEstablishment()
-      .then(function(response) {
-        if (response.establishment) {
-          console.log(response.establishment);
-          this.setState({
-            establishment: response.establishment,
-            loading: false,
-            firstAPICallFinished: true
-          });
-        } else {
-          console.log(response);
-          this.setState({
-            error: true,
-            loading: false
-          });
-        }
-      }.bind(this));
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log(position.coords.latitude, position.coords.longitude);
+      EstablishmentAPI.getEstablishment(position.coords.latitude, position.coords.longitude)
+        .then(function(response) {
+          if (response.establishment) {
+            console.log(response.establishment);
+            this.setState({
+              establishment: response.establishment,
+              loading: false,
+              firstAPICallFinished: true
+            });
+          } else {
+            console.log(response);
+            this.setState({
+              error: true,
+              loading: false
+            });
+          }
+        }.bind(this));
+    });
   },
 
   render: function() {
