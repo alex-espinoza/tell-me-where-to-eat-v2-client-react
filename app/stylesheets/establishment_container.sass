@@ -1,3 +1,5 @@
+@import "variables.sass"
+
 .establishment-container
   position: relative
   height: 100%
@@ -93,3 +95,15 @@
 .establishment-container .button-container button
   margin: 6px 0 0 0
 
+@media (max-width: $mobile)
+  .establishment-container .information h1
+    font-size: 26px
+    line-height: 32px
+
+  .establishment-container .information p,
+  .establishment-container .information a,
+    font-size: 14px
+    line-height: 20px
+
+  .establishment-container .button-container button
+    font-size: 18px
