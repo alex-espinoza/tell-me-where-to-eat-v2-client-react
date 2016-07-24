@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
@@ -46,5 +47,22 @@ var config = {
     root: [__dirname + './app']
   }
 };
+
+if (!DEV_ENV) {
+  var productionPlugins = [
+     new webpack.DefinePlugin({
+      'process.env':{
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress:{
+        warnings: true
+      }
+    })
+  ];
+
+  config.plugins = config.plugins.concat(productionPlugins);
+}
 
 module.exports = config;
