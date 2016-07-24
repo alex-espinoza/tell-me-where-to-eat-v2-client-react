@@ -25,7 +25,6 @@ var Main = React.createClass({
       EstablishmentAPI.getEstablishment(position.coords.latitude, position.coords.longitude, this.state.radius)
         .then(function(response) {
           if (response.establishment) {
-            console.log(response.establishment);
             this.setState({
               userLocation: {lat: position.coords.latitude, lng: position.coords.longitude},
               establishment: response.establishment,
@@ -33,7 +32,6 @@ var Main = React.createClass({
               firstAPICallFinished: true,
             });
           } else {
-            console.log(response);
             this.setState({
               error: true,
               loading: false

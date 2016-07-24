@@ -2,11 +2,9 @@ require('./stylesheets/base');
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Router = require('react-router').Router;
-var hashHistory = require('react-router').hashHistory;
-var routes = require('./config/routes');
+var Main = require('./components/Main');
 
 ReactDOM.render(
-  <Router history={hashHistory}>{routes}</Router>,
+  <Main />,
   document.getElementById('app')
 )
