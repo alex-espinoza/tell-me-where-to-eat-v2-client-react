@@ -1,26 +1,21 @@
-require('../stylesheets/find_container');
+require('../stylesheets/find_container')
+import React from 'react'
+import TellMeButton from './TellMeButton'
 
-var React = require('react');
-var TellMeButton = require('./TellMeButton');
+class FindContainer extends React.Component {
+  getFindContainerClasses() {
+    let containerClass = 'find-container'
+    var visible = this.props.firstAPICallFinished ? ' hidden' : ''
+    return containerClass + visible
+  }
 
-var FindContainer = React.createClass({
-  getFindContainerClasses: function() {
-    var containerClass = 'find-container';
-    var visible = this.props.firstAPICallFinished ? ' hidden' : '';
-    return containerClass + visible;
-  },
-
-  changeRadius: function(event) {
-    this.props.changeRadius(event.target.value);
-  },
-
-  render: function() {
+  render() {
     return (
       <div className={this.getFindContainerClasses()}>
         <div className="find-content">
           <div className="description">
             <span>Find a restaurant within a</span>
-            <select name="radius-select" value={this.props.radius} onChange={this.changeRadius}>
+            <select name="radius-select" value={this.props.radius} onChange={(event) => this.props.changeRadius(event.target.value)}>
               <option value="403">¼ mile radius</option>
               <option value="805">½ mile radius</option>
               <option value="1610">1 mile radius</option>
@@ -39,6 +34,6 @@ var FindContainer = React.createClass({
       </div>
     )
   }
-});
+}
 
-module.exports = FindContainer;
+export default FindContainer

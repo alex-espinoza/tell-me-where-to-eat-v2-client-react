@@ -1,37 +1,33 @@
-require('../stylesheets/establishment_container');
+require('../stylesheets/establishment_container')
+import React from 'react'
+import {GoogleMapLoader, GoogleMap, Marker, OverlayView} from 'react-google-maps'
+import TellMeButton from './TellMeButton'
 
-var React = require('react');
-var ReactGoogleMaps = require('react-google-maps');
-var GoogleMapLoader = ReactGoogleMaps.GoogleMapLoader;
-var GoogleMap = ReactGoogleMaps.GoogleMap;
-var Marker = ReactGoogleMaps.Marker;
-var OverlayView = ReactGoogleMaps.OverlayView;
-var TellMeButton = require('./TellMeButton');
+class EstablishmentContainer extends React.Component {
+  getEstablishmentContainerClasses() {
+    let containerClass = 'establishment-container'
+    var visible = this.props.establishment.hasOwnProperty('name') ? ' visible' : ''
+    return containerClass + visible
+  }
 
-var EstablishmentContainer = React.createClass({
-  getEstablishmentContainerClasses: function() {
-    var containerClass = 'establishment-container';
-    var visible = this.props.establishment.hasOwnProperty('name') ? ' visible' : '';
-    return containerClass + visible;
-  },
-
-  getEstablishmentCoordinates: function() {
+  getEstablishmentCoordinates() {
     if (this.props.establishment.hasOwnProperty('name')) {
-      return {lat: this.props.establishment.coordinates[0], lng: this.props.establishment.coordinates[1]};
-    } else {
-      return {lat: 0, lng: 0};
+      return {lat: this.props.establishment.coordinates[0], lng: this.props.establishment.coordinates[1]}
     }
-  },
+    else {
+      return {lat: 0, lng: 0}
+    }
+  }
 
-  getZoomFromRadius: function() {
-    return this.props.radius > 805 ? 15 : 16;
-  },
+  getZoomFromRadius() {
+    return this.props.radius > 805 ? 15 : 16
+  }
 
-  render: function() {
+  render() {
     return (
       <div className={this.getEstablishmentContainerClasses()}>
         <GoogleMapLoader
-          query={{ libraries: "geometry,drawing,places,visualization" }}
+          query={{ libraries: 'geometry,drawing,places,visualization' }}
           containerElement={
             <div className='map' />
           }
@@ -57,7 +53,7 @@ var EstablishmentContainer = React.createClass({
             <h1>{this.props.establishment.name}</h1>
             <p>{this.props.establishment.categories}</p>
             <p>{this.props.establishment.address && this.props.establishment.address.join(' ')}</p>
-            <a href={'tel:' + this.props.establishment.phone_number}>{this.props.establishment.phone_number}</a>
+            <a href={`tel:${this.props.establishment.phone_number}`}>{this.props.establishment.phone_number}</a>
             <a href={this.props.establishment.url} target="_blank">Visit Yelp Page</a>
           </div>
           <div className="button-container">
@@ -70,6 +66,6 @@ var EstablishmentContainer = React.createClass({
       </div>
     )
   }
-});
+}
 
-module.exports = EstablishmentContainer;
+export default EstablishmentContainer

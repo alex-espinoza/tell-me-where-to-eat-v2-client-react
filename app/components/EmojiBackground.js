@@ -1,7 +1,7 @@
-require('../stylesheets/emoji_background');
+require('../stylesheets/emoji_background')
+import React from 'react'
 
-var React = require('react');
-var foodEmojis = [
+const FOOD_EMOJIS = [
   '🍉',
   '🍍',
   '🍎',
@@ -45,68 +45,69 @@ var foodEmojis = [
   '🍸',
   '🍹',
   '🍺',
-];
+]
 
-var EmojiBackground = React.createClass({
-  getInitialState: function() {
-    return {
+class EmojiBackground extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
       initialEmoji: '',
       emojiInterval: null,
     }
-  },
+  }
 
-  componentWillMount: function() {
-    var initialEmoji = this.getRandomFoodEmoji();
-    var emojiInterval = this.setupEmojiInterval();
+  componentWillMount() {
+    let initialEmoji = this.getRandomFoodEmoji()
+    let emojiInterval = this.setupEmojiInterval()
 
     this.setState({
       initialEmoji: initialEmoji,
       emojiInterval: emojiInterval
     })
-  },
+  }
 
-  componentDidUpdate: function() {
-    this.stopEmojiIntervalAfterFirstAPICall();
-  },
+  componentDidUpdate() {
+    this.stopEmojiIntervalAfterFirstAPICall()
+  }
 
-  setupEmojiInterval: function() {
-    var emojiInterval = setInterval(function() {
-      var emojiSpan = document.getElementsByClassName('food-emoji')[0];
-      var currentEmoji = emojiSpan.innerText;
-      var randomEmoji = currentEmoji;
+  setupEmojiInterval() {
+    let emojiInterval = setInterval(() => {
+      var emojiSpan = document.getElementsByClassName('food-emoji')[0]
+      var currentEmoji = emojiSpan.innerText
+      var randomEmoji = currentEmoji
 
       while (currentEmoji === randomEmoji) {
-        randomEmoji = this.getRandomFoodEmoji();
+        randomEmoji = this.getRandomFoodEmoji()
       }
 
-      emojiSpan.classList.add('hidden');
+      emojiSpan.classList.add('hidden')
 
-      setTimeout(function() {
-        emojiSpan.innerText = randomEmoji;
-        emojiSpan.classList.remove('hidden');
-      }, 400);
-    }.bind(this), 3800);
+      setTimeout(() => {
+        emojiSpan.innerText = randomEmoji
+        emojiSpan.classList.remove('hidden')
+      }, 400)
+    }, 3800)
 
-    return emojiInterval;
-  },
+    return emojiInterval
+  }
 
-  stopEmojiIntervalAfterFirstAPICall: function() {
-    this.props.firstAPICallFinished && clearInterval(this.state.emojiInterval);
-  },
+  stopEmojiIntervalAfterFirstAPICall() {
+    this.props.firstAPICallFinished && clearInterval(this.state.emojiInterval)
+  }
 
-  getRandomFoodEmoji: function() {
-    return foodEmojis[Math.floor(Math.random() * foodEmojis.length)];
-  },
+  getRandomFoodEmoji() {
+    return FOOD_EMOJIS[Math.floor(Math.random() * FOOD_EMOJIS.length)]
+  }
 
-  getInitialFoodEmoji: function() {
-    return this.getRandomFoodEmoji();
-  },
+  getInitialFoodEmoji() {
+    return this.getRandomFoodEmoji()
+  }
 
-  render: function() {
+  render() {
     return (
       <div className="emoji-background"><span className="food-emoji">{this.state.initialEmoji}</span></div>
     )
   }
-});
+}
 
-module.exports = EmojiBackground;
+export default EmojiBackground

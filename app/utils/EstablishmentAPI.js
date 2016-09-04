@@ -1,19 +1,14 @@
-var axios = require('axios');
+import axios from 'axios'
+const ENDPOINT_URL = 'https://tell-me-where-to-eat-v2-rails.herokuapp.com/api/establishments/find'
 
-var endpointUrl = 'https://tell-me-where-to-eat-v2-rails.herokuapp.com/api/establishments/find';
-
-var EstablishmentAPI = {
-  getEstablishment: function(latitude, longitude, radius) {
-    var url = endpointUrl + '?latitude=' + latitude + '&longitude=' + longitude + '&radius=' + radius;
+const EstablishmentAPI = {
+  getEstablishment(latitude, longitude, radius) {
+    let url = `${ENDPOINT_URL}?latitude=${latitude}&longitude=${longitude}&radius=${radius}`
 
     return axios.get(url)
-      .then(function(response) {
-        return response.data;
-      })
-      .catch(function(error) {
-        return error;
-      });
+      .then((response) => (response.data))
+      .catch((error) => (error))
   }
 }
 
-module.exports = EstablishmentAPI;
+export default EstablishmentAPI

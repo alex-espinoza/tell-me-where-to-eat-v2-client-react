@@ -1,8 +1,7 @@
-require('./stylesheets/base');
-
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Main = require('./components/Main');
+require('./stylesheets/base')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Main from './components/Main'
 
 ReactDOM.render(
   <Main />,

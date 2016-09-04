@@ -1,10 +1,10 @@
-require('../stylesheets/tell_me_button');
+require('../stylesheets/tell_me_button')
+import React from 'react'
 
-var React = require('react');
-
-var TellMeButton = React.createClass({
-  getInitialState: function() {
-    return {
+class TellMeButton extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
       defaultButtonText: 'Tell Me Where To Eat',
       loadingButtonText: [
         'Hold on...',
@@ -21,22 +21,23 @@ var TellMeButton = React.createClass({
         'Another one...'
       ]
     }
-  },
+  }
 
-  getButtonText: function() {
+  getButtonText() {
     if (this.props.loading) {
-      return this.state.loadingButtonText[Math.floor(Math.random() * this.state.loadingButtonText.length)];
-    } else {
-      return this.state.defaultButtonText;
+      return this.state.loadingButtonText[Math.floor(Math.random() * this.state.loadingButtonText.length)]
     }
-  },
+    else {
+      return this.state.defaultButtonText
+    }
+  }
 
-  render: function() {
-    var disabled = this.props.loading ? true : false;
+  render() {
+    var disabled = this.props.loading ? true : false
     return (
-      <button className="find-button" onClick={this.props.getRandomEstablishment} disabled={disabled}>{this.getButtonText()}</button>
+      <button className="find-button" onClick={() => this.props.getRandomEstablishment()} disabled={disabled}>{this.getButtonText()}</button>
     )
   }
-});
+}
 
-module.exports = TellMeButton;
+export default TellMeButton
