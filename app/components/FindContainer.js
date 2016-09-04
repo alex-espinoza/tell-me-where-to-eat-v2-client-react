@@ -32,6 +32,9 @@ var FindContainer = React.createClass({
             getRandomEstablishment={this.props.getRandomEstablishment}
             loading={this.props.loading}
           />
+          <div className="sidenote">
+            <p>Results will be more accurate on a wireless connection.</p>
+          </div>
         </div>
       </div>
     )
