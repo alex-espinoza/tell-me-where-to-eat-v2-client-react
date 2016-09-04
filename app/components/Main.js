@@ -10,7 +10,7 @@ var Main = React.createClass({
   getInitialState: function() {
     return {
       userLocation: {lat: 0, lng: 0},
-      radius: 805,
+      radius: 403,
       establishment: {},
       loading: false,
       error: false,

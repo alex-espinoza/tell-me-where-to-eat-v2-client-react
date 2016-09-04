@@ -21,6 +21,7 @@ var FindContainer = React.createClass({
           <div className="description">
             <span>Find a restaurant within a</span>
             <select name="radius-select" value={this.props.radius} onChange={this.changeRadius}>
+              <option value="403">¼ mile radius</option>
               <option value="805">½ mile radius</option>
               <option value="1610">1 mile radius</option>
               <option value="3219">2 mile radius</option>
