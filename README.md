@@ -8,6 +8,9 @@ Check it out at: https://s3.amazonaws.com/tellmewheretoeat.com/index.html
 - Babel
 - PostCSS
 
+### Deploy:
+- Simply commit changes and `git push origin master`. Repo is set up with Codeship CI and automatically deploys to S3.
+
 ### Todo:
 - Tests
 - Buy domain
