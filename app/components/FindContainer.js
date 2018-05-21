@@ -28,7 +28,8 @@ class FindContainer extends React.Component {
             loading={this.props.loading}
           />
           <div className="sidenote">
-            <p>Results will be more accurate on a wireless connection.</p>
+            <p>Results will be more accurate on a wireless or mobile connection.</p>
+            <p>Created by <a href="https://alex.aspria.net/">Alex Espinoza</a>.</p>
           </div>
         </div>
       </div>
