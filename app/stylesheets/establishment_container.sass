@@ -31,31 +31,32 @@
   border-radius: 100px
   width: 17px
   height: 17px
+  display: flex
+  justify-content: center
+  align-items: center
+  align-content: center
 
 .establishment-container .user-location-pulse
+  flex: 0 0 100%
   background: transparent
   border: 1px solid #2198D6
   border-radius: 100px
-  width: 20px
-  height: 20px
-  position: absolute
-  top: 50%
-  left: 50%
-  margin: -10px 0 0 -10px
+  width: 17px
+  height: 17px
   animation: pulsate 1.8s ease-out
   animation-iteration-count: infinite
   opacity: 0
 
 @keyframes pulsate
   0%
-    transform: scale(0.1)
+    transform: scale(0)
     opacity: 0
   40%
     opacity: 1
   80%
     opacity: 0
   100%
-    transform: scale(3)
+    transform: scale(4)
 
 .establishment-container .information-container
   position: relative
